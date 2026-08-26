@@ -1,0 +1,220 @@
+:root {
+  --bg: #0b1010;
+  --panel: #121a1a;
+  --panel-border: #243a35;
+  --text: #dcebe6;
+  --muted: #8aa59d;
+  --accent: #7fd1b9;
+  --healthy: #69d2a0;
+  --rotten: #e07a5f;
+  --warning: #e8c468;
+  --danger: #d96c57;
+  --radius: 12px;
+  --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(127, 209, 185, 0.08), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(224, 122, 95, 0.06), transparent 38%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+body {
+  line-height: 1.45;
+}
+
+.app-shell {
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.app-subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) minmax(0, 1fr) minmax(320px, 420px);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .audit-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.panel-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.panel-subtitle {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form-field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--panel-border);
+  background: #0d1414;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid rgba(127, 209, 185, 0.45);
+  border-color: var(--accent);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+button {
+  border: 1px solid var(--panel-border);
+  background: #182424;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #081110;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-status {
+  min-height: 18px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.form-status.error {
+  color: var(--danger);
+}
+
+.form-status.success {
+  color: var(--healthy);
+}
+
+.canvas-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.canvas-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 420px;
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, #10201d 0%, #081010 55%, #050a0a 100%);
+}
+
+.mycelium-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
